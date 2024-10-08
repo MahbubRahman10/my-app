@@ -1,5 +1,12 @@
 import { Routes } from '@angular/router';
 
+import { LoginComponent } from './login/login.component';
+import { LayoutComponent } from './layout/layout.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
+
+
 export const routes: Routes = [
 
 	{
@@ -18,19 +25,19 @@ export const routes: Routes = [
 		component:LayoutComponent,
 		children:[
 			{
-				path: 'dashboard'
+				path: 'dashboard',
 				component: DashboardComponent
 			},
 			{
-				path: 'employee'
+				path: 'employee',
 				component: EmployeeComponent
 			},
 			{
-				path: 'projects'
+				path: 'projects',
 				component: EmployeeComponent
 			},
 			{
-				path: 'dashboard'
+				path: 'dashboard',
 				component: EmployeeComponent
 			}
 		]

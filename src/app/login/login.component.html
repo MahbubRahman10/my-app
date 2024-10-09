@@ -11,17 +11,17 @@
 
                 <div class="input-box">
                     <div class="inputs">
-                        <input type="email" placeholder="Enter your Email" required>
+                        <input type="email" id="email" [(ngModel)] = "loginobj.username" placeholder="Enter your Email" required>
                         <div class="underline-input"></div>
                     </div>
 
                     <div class="inputs">
-                        <input type="password" placeholder="Enter your Password" required>
+                        <input type="password" id="password" [(ngModel)] = "loginobj.password" placeholder="Enter your Password" required>
                         <div class="underline-input"></div>
                     </div>
 
                     <div class="submit-button">
-                        <input type="submit" value="Continue">
+                        <input type="button" (click) = "onLogin" value="Continue">
                     </div>
                 </div>
                 

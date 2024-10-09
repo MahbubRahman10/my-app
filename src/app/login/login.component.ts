@@ -1,12 +1,28 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
+
+  loginObj: any = {
+    username: '',
+    password: ''
+  };
+
+  router = inject(Router);
+
+  onLogin(){
+    if(this.loginObj.username == "admin" && this.loginObj.password == "123456"){
+      this.router.navigateByUrl('dashboard');
+    } else{
+      alert("Wrong Username or Password");
+    }
+  }
 
 }

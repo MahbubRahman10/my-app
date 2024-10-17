@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 
 @Component({
   selector: 'app-employee',
@@ -8,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './employee.component.css'
 })
 export class EmployeeComponent {
+
+  isFormVisiable = signal<boolean>(false);
 
 }

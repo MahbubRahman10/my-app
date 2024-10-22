@@ -34,6 +34,9 @@
                     <select id="deptId" class="form-select">
                         <option selected>Select department</option>
                         <!-- Department options -->
+                         @for (item of parentDeptList(); track $index) {
+                            <option [value]="item.departmentId">{{ item.departmentName }}</option>
+                         }
                     </select>
                 </div>
                 <div class="col-md-4">

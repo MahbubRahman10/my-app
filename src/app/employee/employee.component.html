@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-md-4">
                     <label for="deptId" class="form-label">Parent Department</label>
-                    <select id="deptId" class="form-select">
+                    <select id="deptId" class="form-select" [(ngModel)] ="parentDept">
                         <option selected>Select department</option>
                         <!-- Department options -->
                          @for (item of parentDeptList(); track $index) {

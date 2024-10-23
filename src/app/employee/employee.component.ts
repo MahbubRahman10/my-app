@@ -1,11 +1,13 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MasterService } from '../service/master.service';
 import { IApiResponse, IParentDept } from '../model/interface/master';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.css'
 })
@@ -16,6 +18,8 @@ export class EmployeeComponent implements OnInit {
   masterSrv = inject(MasterService);
   
   parentDeptList = signal<IParentDept[]>([])
+
+  parentDept: string = '';
 
   ngOnInit(): void {
     this.getParentDept();

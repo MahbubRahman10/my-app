@@ -11,7 +11,11 @@ export class MasterService {
   constructor(private http: HttpClient) { }
 
   getAlldept(): Observable<IApiResponse>{
-    return this.http.get<IApiResponse>("https://projectapi.gerasim.in/api/Complaint/GetParentDepartment");
+    return this.http.get<IApiResponse>("https://projectapi.gerasim.in/api/EmployeeManagement/GetParentDepartment");
+    
+  }
+  getChildDeptById(deptid:number): Observable<IApiResponse>{
+    return this.http.get<IApiResponse>("https://projectapi.gerasim.in/api/EmployeeManagement/GetChildDepartmentByParentId?deptId="+deptid);
     
   }
 }

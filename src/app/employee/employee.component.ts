@@ -1,6 +1,6 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { MasterService } from '../service/master.service';
-import { IApiResponse, IParentDept } from '../model/interface/master';
+import { IApiResponse, IChildDept, IParentDept } from '../model/interface/master';
 import { FormsModule } from '@angular/forms';
 
 
@@ -18,8 +18,9 @@ export class EmployeeComponent implements OnInit {
   masterSrv = inject(MasterService);
   
   parentDeptList = signal<IParentDept[]>([])
+  childDeptList = signal<IChildDept[]>([])
 
-  parentDept: string = '';
+  parentDeptId: number = 0;
 
   ngOnInit(): void {
     this.getParentDept();
@@ -30,4 +31,11 @@ export class EmployeeComponent implements OnInit {
       this.parentDeptList.set(res.data);
     })
   }
+  
+  onParentDeptChange(){
+    this.masterSrv.getChildDeptById(this.parentDeptId).subscribe((res:IApiResponse)=>{
+      this.childDeptList.set(res.data);
+    })
+  }
+
 }

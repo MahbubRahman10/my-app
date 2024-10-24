@@ -2,6 +2,8 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { MasterService } from '../service/master.service';
 import { IApiResponse, IChildDept, IParentDept } from '../model/interface/master';
 import { FormsModule } from '@angular/forms';
+import { Employee } from '../model/class/Employee';
+import { error } from 'console';
 
 
 @Component({
@@ -14,27 +16,33 @@ import { FormsModule } from '@angular/forms';
 export class EmployeeComponent implements OnInit {
 
   isFormVisiable = signal<boolean>(false);
-
   masterSrv = inject(MasterService);
-  
   parentDeptList = signal<IParentDept[]>([])
   childDeptList = signal<IChildDept[]>([])
-
   parentDeptId: number = 0;
+  employeeObj: Employee = new Employee();
 
   ngOnInit(): void {
     this.getParentDept();
   }
-
   getParentDept(){
     this.masterSrv.getAlldept().subscribe((res:IApiResponse) =>{
       this.parentDeptList.set(res.data);
     })
   }
-  
   onParentDeptChange(){
     this.masterSrv.getChildDeptById(this.parentDeptId).subscribe((res:IApiResponse)=>{
       this.childDeptList.set(res.data);
+    })
+  }
+
+  onSave(){
+    debugger;
+    this.masterSrv.saveEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
+      debugger;
+      alert("Employee Created");
+    }, error=>{
+
     })
   }
 

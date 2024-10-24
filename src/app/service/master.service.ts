@@ -26,4 +26,9 @@ export class MasterService {
     
   }
 
+  getAllEmp(): Observable<Employee[]>{
+    return this.http.get<Employee[]>("https://projectapi.gerasim.in/api/EmployeeManagement/GetAllEmployees");
+    
+  }
+
 }

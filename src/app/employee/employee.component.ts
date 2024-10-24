@@ -17,13 +17,15 @@ export class EmployeeComponent implements OnInit {
 
   isFormVisiable = signal<boolean>(false);
   masterSrv = inject(MasterService);
-  parentDeptList = signal<IParentDept[]>([])
-  childDeptList = signal<IChildDept[]>([])
+  parentDeptList = signal<IParentDept[]>([]);
+  employeeList = signal<Employee[]>([]);
+  childDeptList = signal<IChildDept[]>([]);
   parentDeptId: number = 0;
   employeeObj: Employee = new Employee();
 
   ngOnInit(): void {
     this.getParentDept();
+    this.getEmployees();
   }
   getParentDept(){
     this.masterSrv.getAlldept().subscribe((res:IApiResponse) =>{
@@ -43,6 +45,12 @@ export class EmployeeComponent implements OnInit {
       alert("Employee Created");
     }, error=>{
 
+    })
+  }
+
+  getEmployees(){
+    this.masterSrv.getAllEmp().subscribe((res:Employee[]) =>{
+      this.employeeList.set(res);
     })
   }
 

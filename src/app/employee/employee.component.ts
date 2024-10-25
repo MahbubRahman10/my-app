@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { Employee } from '../model/class/Employee';
 import { error } from 'console';
 
-
 @Component({
   selector: 'app-employee',
   standalone: true,
@@ -37,12 +36,16 @@ export class EmployeeComponent implements OnInit {
       this.childDeptList.set(res.data);
     })
   }
-
+  onCancel(){
+    this.isFormVisiable.set(false);
+    this.employeeObj = new Employee();
+  }
   onSave(){
     this.masterSrv.saveEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
-      debugger;
       alert("Employee Created");
       this.employeeObj = new Employee();
+      this.isFormVisiable.set(false);
+      this.getEmployees();
     }, error=>{
 
     })
@@ -50,7 +53,7 @@ export class EmployeeComponent implements OnInit {
 
   getEmployees(){
     this.masterSrv.getAllEmp().subscribe((res:Employee[]) =>{
-      this.employeeList.set(res);
+      this.employeeList.set(res.sort((a, b) => b.employeeId - a.employeeId));
     })
   }
 
@@ -86,3 +89,7 @@ export class EmployeeComponent implements OnInit {
 
 
 }
+function orderBy(res: Employee[], arg1: string[], arg2: string[]) {
+  throw new Error('Function not implemented.');
+}
+

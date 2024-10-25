@@ -36,5 +36,9 @@ export class MasterService {
     return this.http.put<IApiResponse>("https://projectapi.gerasim.in/api/EmployeeManagement/UpdateEmployee/" + obj.employeeId, obj);
     
   }
+  deleteEmp(id: number): Observable<IApiResponse>{
+    return this.http.delete<IApiResponse>("https://projectapi.gerasim.in/api/EmployeeManagement/DeleteEmployee/" +id);
+    
+  }
 
 }

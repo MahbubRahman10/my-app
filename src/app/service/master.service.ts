@@ -31,4 +31,10 @@ export class MasterService {
     
   }
 
+  updateEmp(obj:Employee): Observable<IApiResponse>{
+    debugger;
+    return this.http.put<IApiResponse>("https://projectapi.gerasim.in/api/EmployeeManagement/UpdateEmployee/" + obj.employeeId, obj);
+    
+  }
+
 }

@@ -39,10 +39,10 @@ export class EmployeeComponent implements OnInit {
   }
 
   onSave(){
-    debugger;
     this.masterSrv.saveEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
       debugger;
       alert("Employee Created");
+      this.employeeObj = new Employee();
     }, error=>{
 
     })
@@ -53,5 +53,24 @@ export class EmployeeComponent implements OnInit {
       this.employeeList.set(res);
     })
   }
+
+  onEdit(data: Employee){
+    this.employeeObj = data;
+    this.isFormVisiable.set(true);
+  }
+  onUpdate(){
+    this.masterSrv.updateEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
+      debugger;
+      alert("Employee Updated");
+      this.employeeObj = new Employee();
+      this.isFormVisiable.set(false);
+    }, error=>{
+
+    })
+  }
+  onDelete(id: string){
+
+  }
+
 
 }

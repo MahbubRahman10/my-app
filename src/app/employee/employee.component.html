@@ -72,7 +72,12 @@
                     </select>
                 </div>
             </div>
-            <button type="button" class="btn btn-primary mt-3" (click)="onSave()">Submit</button>
+            @if (this.employeeObj.employeeId == 0) {
+                <button type="button" class="btn btn-primary mt-3" (click)="onSave()">Submit</button>
+            }
+            @else {
+                <button type="button" class="btn btn-warning mt-3" (click)="onUpdate()">Update</button>
+            }
             <button class="btn btn-success mt-3" (click)="isFormVisiable.set(false)">Close </button>
         </form>
     }
@@ -101,7 +106,11 @@
                     <td> {{ item.deptId }} </td>
                     <td>{{ item.role }}</td>
                     <td>{{ item.gender }}</td>
-                    <td></td>
+                    <td>
+                        <button type="button" class="btn btn-primary mt-3" (click)="onEdit(item)">Edit</button>
+                        <button type="button" class="btn btn-danger mt-3" (click)="onDelete(item.emailId)">Delete</button> 
+
+                    </td>
                 </tr>
             }
             <!-- Data rows go here -->

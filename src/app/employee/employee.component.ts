@@ -45,9 +45,9 @@ export class EmployeeComponent implements OnInit {
       alert("Employee Created");
       this.employeeObj = new Employee();
       this.isFormVisiable.set(false);
-   
+      this.getEmployees();
     }, error=>{
-
+      console.log("error")
     })
   }
 

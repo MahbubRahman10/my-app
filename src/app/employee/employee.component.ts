@@ -64,7 +64,7 @@ export class EmployeeComponent implements OnInit {
   onUpdate(){
     this.masterSrv.updateEmp(this.employeeObj).subscribe((res:IApiResponse)=>{
       debugger;
-      alert("Employee Updated");
+      console.log("Employee Updated");
       this.getEmployees();
       this.employeeObj = new Employee();
       this.isFormVisiable.set(false);

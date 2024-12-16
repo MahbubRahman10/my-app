@@ -91,7 +91,6 @@
                 <th>Email</th>
                 <th>Department</th>
                 <th>Role</th>
-                <th>Gender</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -104,7 +103,6 @@
                     <td>{{ item.emailId }}</td>
                     <td> {{ item.deptId }} </td>
                     <td>{{ item.role }}</td>
-                    <td>{{ item.gender }}</td>
                     <td>
                         <button type="button" class="btn btn-primary mt-3" (click)="onEdit(item)">Edit</button>
                         <button type="button" class="btn btn-danger mt-3" (click)="onDelete(item.employeeId)">Delete</button> 
